@@ -26,6 +26,7 @@ loginRoutes.post("/", async (req, res) => {
     username: user.username,
     fullname: user.fullname,
     id: user._id,
+    isAuthenticated: true,
   });
 });
 
