@@ -15,7 +15,7 @@ const productSchema = new mongoose.Schema({
     type: String,
     required: [true, "Product must have an image"],
   },
-  product: {
+  owner: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
   },

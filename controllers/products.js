@@ -20,6 +20,7 @@ module.exports = {
   addNewProduct: async (req, res) => {
     const { productName, productPrice } = req.body;
     const user = req.user;
+    console.log(user);
     if (!req.file) {
       return res.status(400).json({ error: "Product Image is required" });
     }
@@ -29,9 +30,11 @@ module.exports = {
       productName,
       productPrice,
       productImgUrl: result.secure_url,
+      owner: user._id,
     });
-    await newProduct.save();
-
+    const addedProduct = await newProduct.save();
+    user.products.push(addedProduct._id);
+    await user.save();
     fs.unlinkSync(req.file.path);
 
     res.status(201).json("New Product Added Successfully");
