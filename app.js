@@ -24,6 +24,13 @@ mongoose
 
 const app = express();
 app.use(cors());
+app.use(
+  cors({
+    origin:
+      "https://product-front-1xkevggfq-yaseen-sidhiks-projects.vercel.app",
+  })
+);
+
 app.use(express.json());
 app.get("/", (req, res) => {
   res.json("Welcome to product app");
