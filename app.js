@@ -24,7 +24,7 @@ mongoose
 
 const app = express();
 app.use(cors());
-
+app.use(express.static("dist"));
 app.use(express.json());
 app.get("/", (req, res) => {
   res.json("Welcome to product app");
