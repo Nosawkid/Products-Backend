@@ -4,7 +4,7 @@ const fs = require("fs");
 
 module.exports = {
   getAllProducts: async (req, res) => {
-    const products = await Product.find({});
+    const products = await Product.find({}).populate("owner", "username");
     res.status(200).json(products);
   },
 
